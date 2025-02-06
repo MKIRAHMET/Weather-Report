@@ -14,6 +14,12 @@ fetch(apiUrl)
             <h2>Weather in ${data.name}</h2>
             <p>Temperature: ${data.main.temp}°C</p>
             <p>Description: ${data.weather[0].description}</p>`;
-    });
+            
+    }).catch(error => {
+        console.error('Error fetching weather:', error);
+        const weatherInfo = document.getElementById('weatherInfo');
+        weatherInfo.innerHTML = `<p>Failed to fetch weather. Please try again.</p>`;
+      });;
 }
+
 document.getElementById('weatherForm').addEventListener('submit',showweatherDetails );
